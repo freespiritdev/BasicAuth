@@ -9,7 +9,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const webpack = require('webpack');
-const webpackConfig = require('../webpack.config');
+const webpackConfig = require('../webpack.dev');
 
 // DB CONNECT
 require('mongoose').connect(MONGO_URI, err => {
@@ -20,6 +20,11 @@ require('mongoose').connect(MONGO_URI, err => {
 // APP DECLARATION
 const app = express();
 
+if(process.env.NODE_ENV === 'production'){
+
+	app.use(express.static(path.join(__dirname, '../build')))
+
+} else {
 // WEBPACK CONFIG
 const compiler = webpack(webpackConfig);
 
@@ -29,7 +34,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
-
+}
 // GENERAL MIDDLEWARE
 app.use(morgan('dev'));
 app.use(bodyParser.json());
