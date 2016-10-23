@@ -5,6 +5,7 @@
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",
+    "postinstall": "webpack", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
