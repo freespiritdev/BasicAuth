@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.15.2",
     "bcrypt-node": "^0.1.0",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
