@@ -5,7 +5,7 @@
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",
-    "postinstall": "webpack", 
+    "postinstall": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-node": "^0.1.0",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",

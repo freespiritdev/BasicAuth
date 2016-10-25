@@ -10,8 +10,6 @@ router.post('/register', (req, res) => {
 	});
 });
 
-
-
 router.post('/login', (req, res) => {
 	// console.log('req.cookies:', req.cookies);
 	User.authenticate(req.body, (err, token) => { 
@@ -21,19 +19,17 @@ router.post('/login', (req, res) => {
 			res.cookie('authtoken', token).send();
 		}
 	});
-})
-
+});
 
 router.get('/profile', User.authMidware, (req, res) => {
 	// console.log('req.user:', req.user);
 	res.send(req.user); 
-})
-
+});
 
 // logout route, removes the token
 router.get('/logout', (req, res) => {
 	res.clearCookie('authtoken').send();
-})
+});
 
 
 module.exports = router;
