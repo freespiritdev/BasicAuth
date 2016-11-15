@@ -35,9 +35,9 @@ userSchema.statics.register = function(userObj, callback) {
 userSchema.statics.authenticate = function(userObj, callback) {
 	let { username, password} = userObj; 
 
-	this.findOne({username}, (err, user) => { 
+	this.findOne({username}, (err, dbUser) => { 
 		
-		if(err || !user) {
+		if(err || !dbUser) {
 			return callback(err || 'Username or Password error!');
 		}
 
@@ -46,7 +46,7 @@ userSchema.statics.authenticate = function(userObj, callback) {
 			if(!isMatch) return callback ({err: 'Username or Password error!'});
 		
 			let payload = {
-				_id: user.id
+				_id: dbUser.id
 			}
 
 			jwt.sign(payload, JWT_SECRET, {}, callback); 

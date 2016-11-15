@@ -27,12 +27,12 @@ export class UserStore extends EventEmitter {
     }
   }
 
-  startListening(cb) {
-    this.on('CHANGE', cb);
+  startListening(callback) {
+    this.on('CHANGE', callback);
   }
 
-  stopListening(cb) {
-    this.removeListener('CHANGE', cb);
+  stopListening(callback) {
+    this.removeListener('CHANGE', callback);
   }
 
   get() {
