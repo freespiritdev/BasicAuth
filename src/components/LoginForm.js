@@ -7,7 +7,7 @@ export default class LoginForm extends Component {
 
   	this.state = {
   		username: '',
-  		password1: ''
+  		password: ''
   	}
   	this._onInputChange = this._onInputChange.bind(this);
   	this._submit = this._submit.bind(this);
@@ -23,20 +23,20 @@ export default class LoginForm extends Component {
 
   	this.setState({
   		[key]: value
-  	})
+  	});
   	// console.log('e.target:', e.target);
   	// console.log('e.target.dataset:', e.target.dataset);
   }
 
   _submit(e){
   	e.preventDefault();
-    
+
     UserActions.login(this.state);
-  	
   }
 
   render() {
   	let { username, password } = this.state;
+
     return (
       <div>
       	<form onSubmit={this._submit}>

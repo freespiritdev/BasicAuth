@@ -4,8 +4,13 @@ import Constants from '../Constants'
 const ServerActions = {
 	receiveProfile(profile){
 		AppDispatcher.dispatch({
-			type: Constants.RECEIVE_PROFILE
+			type: Constants.RECEIVE_PROFILE,
 			profile
+		})
+	},
+	removeProfile(profile){
+		AppDispatcher.dispatch({
+			type: Constants.REMOVE_PROFILE
 		})
 	}
 };
