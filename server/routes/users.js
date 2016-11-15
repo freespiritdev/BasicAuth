@@ -27,7 +27,7 @@ router.get('/profile', User.authMidware, (req, res) => {
 });
 
 // logout route, removes the token
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
 	res.clearCookie('authtoken').send();
 });
 
