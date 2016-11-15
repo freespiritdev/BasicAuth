@@ -5,39 +5,39 @@ import Constants from '../Constants'
 
 let _profile = null;
 
-export default class UserStore extends EventEmitter {
-	constructor() {
-		super();
+export class UserStore extends EventEmitter {
+  constructor() {
+    super();
 
-		AppDispatcher.register(actions => {
-			switch(action.type) {
-				case Constants.RECEIVE_PROFILE:
-					_profile = action.profile;
-					this.emit('CHANGE');
-					break;
-				case Constants.REMOVE_PROFILE:
-					_profile = null;
-					this.emit('CHANGE');
-					break;
-			}
-		});
+    AppDispatcher.register(action => {
+      switch(action.type) {
+        case Constants.RECEIVE_PROFILE:
+          _profile = action.profile;
+          this.emit('CHANGE');
+          break;
+        case Constants.REMOVE_PROFILE:
+          _profile = null;
+          this.emit('CHANGE');
+          break;
+      }
+    });
 
-		if(document.cookie.includes('authtoken')) {
-			UserActions.getProfile();
-		}
-	}
+    if(document.cookie.includes('authtoken')) {
+      UserActions.getProfile();
+    }
+  }
 
-	startListening(callback) {
-		this.on('CHANGE', callback);
-	}
+  startListening(cb) {
+    this.on('CHANGE', cb);
+  }
 
-	stopListening(callback) {
-		this.removeListener('CHANGE', callback);
-	}
+  stopListening(cb) {
+    this.removeListener('CHANGE', cb);
+  }
 
-	get() {
-		return _profile;
-	}
+  get() {
+    return _profile;
+  }
 }
 
-
+export default new UserStore();

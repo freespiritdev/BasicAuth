@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react' 
 import { Link } from 'react-router'
 import UserStore from '../stores/UserStore'
 import WelcomeUser from './WelcomeUser'
 import UserActions from '../actions/UserActions'
-
 
 export default class Navbar extends Component {
 	constructor() {
