@@ -43,7 +43,7 @@ userSchema.statics.authenticate = function(userObj, callback) {
 
 		bcrypt.compare(password, dbUser.password, (err, isMatch) => {
 			if(err) return callback(err);
-			if(!isMatch) return callback ({err 'Username or Password error!'});
+			if(!isMatch) return callback ({err: 'Username or Password error!'});
 		
 			let payload = {
 				_id: user.id
