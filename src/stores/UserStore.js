@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events'
 import AppDispatcher from '../AppDispatcher'
 import UserActions from '../actions/UserActions'
+import RouteActions from '../actions/RouteActions'
 import Constants from '../Constants'
 
 let _profile = null;
@@ -17,14 +18,15 @@ export class UserStore extends EventEmitter {
           break;
         case Constants.REMOVE_PROFILE:
           _profile = null;
+          RouteActions.route('/')
           this.emit('CHANGE');
           break;
       }
     });
 
-    if(document.cookie.includes('authtoken')) {
-      UserActions.getProfile();
-    }
+    // if(document.cookie.includes('authtoken')) {
+    //   UserActions.getProfile();
+    // }
   }
 
   startListening(callback) {

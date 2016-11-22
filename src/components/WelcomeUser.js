@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class WelcomeUser extends Component {
   render() {
   	let { profile } = this.props;
 
-  	if(!profile) {
-  		return <p className="navbar-text"></p>
-  	}    
-
-  	return (
-      <p className="navbar-text">Bienvenidos {profile.username}!</p>
+  if(!profile){
+      return (
+        <ul className="nav navbar-nav navbar-nav navbar-right">
+        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/register">Register</Link></li>
+        </ul> )
+    }
+      return (
+        <ul className="nav navbar-nav navbar-nav navbar-left">
+          <li>
+            <Link to={`/profile/${profile._id}`}>
+              <i className="glyphicon glyphicon-user"></i>
+              Bienvenidos  {profile.username}!
+            </Link>
+          </li>
+          <li>
+            <a onClick={this.props._logout} style={{cursor: 'pointer'}}>Logout</a>
+          </li>
+        </ul>
     )
   }
 }

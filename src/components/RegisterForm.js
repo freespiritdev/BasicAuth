@@ -7,6 +7,7 @@ export default class RegisterForm extends Component {
 
   	this.state = {
   		username: '',
+      email: '',
   		password1: '',
   		password2: ''
   	}
@@ -31,7 +32,7 @@ export default class RegisterForm extends Component {
 
   _submit(e){
   	e.preventDefault();
-  	let { username, password1, password2 } = this.state;
+  	let { username, email, password1, password2 } = this.state;
 
   	if(password1 !== password2) {
   		this.setState({
@@ -52,7 +53,7 @@ export default class RegisterForm extends Component {
   }
 
   render() {
-  	let { username, password1, password2 } = this.state;
+  	let { username, email, password1, password2 } = this.state;
     return (
       <div>
       	<form onSubmit={this._submit}>
@@ -60,6 +61,10 @@ export default class RegisterForm extends Component {
       	    <label>Username</label>
       	    <input type="text" className="form-control"  placeholder="Username" required value={username} data-statekey='username' onChange={this._onInputChange}/>
       	  </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input type="email" className="form-control"  placeholder="Email" required value={email} data-statekey='email' onChange={this._onInputChange}/>
+          </div>
       	  <div className="form-group">
       	    <label>Password</label>
       	    <input type="password" className="form-control"  placeholder="Password" required value={password1} data-statekey='password1' onChange={this._onInputChange}/>
